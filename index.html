@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agência de Marketing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1 class="logo">Agência</h1>
+            <ul class="menu">
+                <li><a href="#sobre">Quem Somos</a></li>
+                <li><a href="#solucoes">Soluçôes</a></li>
+                <li><a href="#cases">Cases</a></li>
+                <li><a href="#">Conheça Mais</a></li>
+            </ul>
+        </nav>
+         <div class="menu-btn" id="menu-btn">☰</div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="texto">
+                <h2>O marketing que <span>Impulsiona o seu sucesso.</span></h2>
+                <a href="#" class="botao">Falar com especialista</a>
+            </div>
+        </section>
+        <section id="sobre" class="scroll fade-left bloco" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1950&q=80'); background-position: center center;">
+            <div class="conteudo">
+                <h2>Quem Somos</h2>
+                <p>Somos uma agência focada em resultados, unindo criatividade e estratégia para impulsionar marcas, empresa, e emprésarios de grandes empresas.</p>
+            </div>
+        </section>
+        <section id="solucoes" class="scroll fade-rigth bloco" style="background-image: url(imagens/imagem-teste\ 3.jpg);">
+            <div class="conteudo">
+                <h2>Soluções</h2>
+                <p>Oferecemos campanhas digitais, gestão de negocios e otimização de tráfego para sua melhor visita e pensamos sempre no cliente.</p>
+            </div>
+        </section>
+        <section id="cases" class="scroll fade-up bloco" style="background-image: url(imagens/imagem-teste1.jpg);">
+            <div class="conteudo">
+                <h2>Cases de Sucesso</h2>
+                <p>Veja como ajudamos nossos clientes a decolarem com suas marcas, negocios empresas etc... Com sites de qualidade pensando sempre em você nossos clientes.</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>2025 Agência de Marketing- Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('.scroll');
+
+  // Ajuste se você tiver header fixo: adiciona offset equivalente ao header
+  const header = document.querySelector('header');
+  const headerHeight = header ? header.offsetHeight : 0;
+
+  const options = {
+    root: null,
+    rootMargin: `-${Math.floor(headerHeight * 0.2)}px 0px -${Math.floor(headerHeight * 0.1)}px 0px`,
+    threshold: 0.15 // 15% visível => anima
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visivel');
+        // opcional: se quiser animar apenas uma vez, desconecta após visível
+        obs.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  sections.forEach(sec => {
+    observer.observe(sec);
+  });
+});
+    </script>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+const menu = document.querySelector('nav ul');
+
+menuBtn.addEventListener('click', () => {
+  menu.classList.toggle('ativo');
+});
+    </script>
+</body>
+</html>

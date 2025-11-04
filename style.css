@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a0a0a;
+    color: white;
+}
+
+header {
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    transition: 1s;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    color: #ff00ff;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 28px;
+  color: black;
+  cursor: pointer;
+}
+
+.hero {
+    background: url(imagens/imagem-teste\ 2.jpg) no-repeat center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero .texto h2 {
+    font-size: 2em;
+    max-width: 700px;
+}
+
+.hero .texto span {
+    color: black;
+}
+
+.botao {
+    display: inline-block;
+    margin-top: 20px;
+    background: black;
+    padding: 12px 25px;
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 1s;
+}
+
+.botao:hover {
+    background: gray;
+}
+
+.bloco {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bloco::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.conteudo {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.conteudo h2 {
+    font-size: 2.1em;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.conteudo p {
+    font-size: 1.1em;
+    color: #ddd;
+}
+
+.scroll {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: opacity 900ms cubic-bezier(.2,.9,.2,1), transform 900ms cubic-bezier(.2,.9,.2,1);
+}
+
+/* definições de offset iniciais por direção */
+.fade-left { transform: translateX(-80px); }
+.fade-right { transform: translateX(80px); }
+.fade-up { transform: translateY(80px); }
+
+/* estado ativo (quando IntersectionObserver adiciona .visivel) */
+.scroll.visivel {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+}
+
+/* Para suavizar em dispositivos de pouca potência, reduzimos distância e duração */
+@media (max-width: 600px) {
+  .fade-left, .fade-right, .fade-up { transform: translateY(40px); }
+  .scroll { transition-duration: 700ms; }
+}
+
+@media (min-width: 900px) {
+  /* só desktop: parallax via fixed */
+  .bloco {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-btn {
+    display: block;
+  }
+
+  nav ul {
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+
+  nav ul.ativo {
+    height: 150px;
+    padding: 10px 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  section {
+    padding: 60px 15px;
+    min-height: 70vh;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    padding: 15px 25px;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+
+  section {
+    padding: 80px 20px;
+  }
+
+  h1 {
+    font-size: 2.2em;
+  }
+}
