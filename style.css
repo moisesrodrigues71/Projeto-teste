@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 *{
     margin: 0px;
     padding: 0px;
@@ -18,11 +20,22 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: rgba(0, 0, 0, 0.6);
-  position: fixed;
+  background: none;
+  position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 100;
+}
+
+div > h2.diferente {
+  font-family: "Bebas Neue", sans-serif;
+  color: #ff00cc;
+  font-size: 3.5em;
+}
+
+div > h2 {
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .container {
@@ -34,9 +47,11 @@ header {
 }
 
 .logo {
+  font-family: "Bebas Neue", sans-serif;
     font-weight: 700;
     color: white;
     letter-spacing: 2px;
+    border: 1px solid black;
 }
 
 .menu {
@@ -59,12 +74,12 @@ header {
 .menu-btn {
   display: none;
   font-size: 28px;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 
 .hero {
-    background: url(imagens/imagem-teste\ 2.jpg) no-repeat center/cover;
+    background: url(imagens/imagem-cgat.png) no-repeat center/cover;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -95,7 +110,7 @@ header {
 }
 
 .botao:hover {
-    background: gray;
+    background: #ff00cc;
 }
 
 .bloco {
@@ -231,5 +246,56 @@ header {
 
   h1 {
     font-size: 2.2em;
+  }
+}
+
+.hero .texto h2 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: surgirTexto 1.2s ease-out forwards;
+}
+
+.hero .texto span {
+  display: inline-block;
+  background: linear-gradient(90deg, #a500ff, #ff00cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: brilho 2s ease-in-out infinite alternate;
+}
+
+.hero .botao {
+  opacity: 0;
+  animation: surgirBotao 1.5s ease-out 0.6s forwards;
+}
+
+/* ======== KEYFRAMES ======== */
+@keyframes surgirTexto {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes surgirBotao {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes brilho {
+  0% {
+    filter: brightness(1);
+  }
+  100% {
+    filter: brightness(1.4);
   }
 }
