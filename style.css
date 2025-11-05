@@ -299,3 +299,27 @@ div > h2 {
     filter: brightness(1.4);
   }
 }
+
+.scroll p {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.scroll.visivel p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Se quiser variar um pouco entre seções */
+#sobre.visivel p {
+  transition-delay: 0.2s;
+}
+
+#solucoes.visivel p {
+  transition-delay: 0.3s;
+}
+
+#cases.visivel p {
+  transition-delay: 0.4s;
+}
